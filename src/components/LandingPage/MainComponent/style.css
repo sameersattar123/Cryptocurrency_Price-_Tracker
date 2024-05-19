@@ -1,0 +1,45 @@
+.flex-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.5rem 3rem;
+}
+
+.track-cypto-heading , .real-time-heading{
+    font-size: 7rem;
+    margin: 0;
+}
+
+.track-cypto-heading {
+    color: var(--white);
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: var(--white);
+}
+
+.track-cypto-heading:hover {
+    -webkit-text-stroke-color: var(--white);
+    color: var(--black);
+    transition: all 0.3s;
+}
+
+.real-time-heading{
+    color: var(--blue);
+}
+
+.info-text {
+    font-size: 1rem;
+    color: var(--grey);
+}
+
+.btn-flex {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.phone-container {
+    width: 50vw;
+    position: relative;
+}

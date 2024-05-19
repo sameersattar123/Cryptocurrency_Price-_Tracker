@@ -6,4 +6,4 @@ const Dashboad = () => {
   )
 }
 
-export default Dashboad
+export default Dashboad 
