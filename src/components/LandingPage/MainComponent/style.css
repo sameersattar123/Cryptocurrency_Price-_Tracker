@@ -42,4 +42,65 @@
 .phone-container {
     width: 50vw;
     position: relative;
+    padding: 1rem;
 }
+
+.iphone {
+    position : absolute;
+    width : 50%;
+    z-index : 100;
+    min-width: 300px;
+    right: 0;
+}
+
+.gradient {
+    position : absolute;
+    right: 0;
+    top: 8rem;
+    width : 40%;
+    min-width: 250px;
+}
+
+@media screen and (max-width: 1250px) {
+    .track-cypto-heading , .real-time-heading{
+        font-size: 5rem;
+    }
+  }
+
+@media screen and (max-width: 1000px) {
+    .iphone {
+        width : 50%;
+        min-width: 250px;
+    }
+    
+    .gradient {
+        width : 40%;
+        min-width: 200px;
+    }
+    
+  }
+@media screen and (max-width: 800px) {
+    .flex-info {
+        flex-direction: column;
+    }
+
+    .phone-container{
+        margin: 0 auto;
+        
+    }
+    .track-cypto-heading , .real-time-heading{
+        font-size: 3rem;
+        text-align: center;
+    }
+    .left-component{
+        width: 100%;
+    }
+
+    .info-text {
+       text-align: center;
+    }
+    
+    .btn-flex {
+        justify-content: center;
+    }
+  }
