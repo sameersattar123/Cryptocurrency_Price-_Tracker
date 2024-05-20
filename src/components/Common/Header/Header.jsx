@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import Drawer from "./Drawer";
 import Button from "../Button/Button";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -11,18 +12,22 @@ const Header = () => {
         <span style={{ color: "var(--blue)" }}>.</span>
       </h1>
       <div className="links">
-        <a href="/">
+        <Link to="/">
           <p className="link">Home</p>
-        </a>
-        <a href="/">
+        </Link>
+        <Link to="/compare">
           <p className="link">Compare</p>
-        </a>
-        <a href="/">
+        </Link>
+        <Link to="/watchlist">
           <p className="link">WatchList</p>
-        </a>
-        <a href="#">
-          <Button outlined={false} onClick={() => console.log("sameer sattar")} text={"Dashboard"} />
-        </a>
+        </Link>
+        <Link to="/dashboard">
+          <Button
+            outlined={false}
+            onClick={() => console.log("sameer sattar")}
+            text={"Dashboard"}
+          />
+        </Link>
       </div>
       <div className="drawer">
         <Drawer />

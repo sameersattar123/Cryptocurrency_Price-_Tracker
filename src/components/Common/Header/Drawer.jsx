@@ -3,6 +3,7 @@ import { useState } from "react";
 import { IconButton } from "@mui/material";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 export default function Drawer() {
   const [open, setOpen] = useState(false);
@@ -19,18 +20,18 @@ export default function Drawer() {
         onOpen={() => setOpen(true)}
       >
         <div className="drawer-component">
-          <a href="/">
+          <Link to="/">
             <p className="link">Home</p>
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/compare">
             <p className="link">Compare</p>
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/watchlist">
             <p className="link">WatchList</p>
-          </a>
-          <a href="/">
+          </Link>
+          <Link to="/dashboard">
             <p className="link">Dasboard</p>
-          </a>
+          </Link>
         </div>
       </SwipeableDrawer>
     </div>
