@@ -4,9 +4,12 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import Grid from "../../Dashboad/Grid/Grid"
+import List from "../../Dashboad/List/List"
+import "./style.css"
 
 export default function LabTabs({coins}) {
-  console.log(coins)
+  // console.log(coins)
   const [value, setValue] = useState('1');
 
   const handleChange = (event, newValue) => {
@@ -23,27 +26,27 @@ export default function LabTabs({coins}) {
           </TabList>
         </div>
         <TabPanel value="grid">
+          <div className="grid-flex">
           {
-            coins.map((item , i) => {
+            coins.map((coin , i) => {
               return (
-                <div key={i}>
-                  <div>
-                   {i + 1}.{item.name}
-                  </div>
-                </div>
+                <Grid 
+                coin={coin}
+                key={i}
+                />
               )
             })
           }
+          </div>
         </TabPanel>
         <TabPanel value="list">
         {
-            coins.map((item , i) => {
+            coins.map((coin , i) => {
               return (
-                <div key={i}>
-                  <div>
-                   {i + 1}.<img src={item.image} alt="" />
-                  </div>
-                </div>
+                <List
+                coin={coin}
+                key={i}
+                />
               )
             })
           }

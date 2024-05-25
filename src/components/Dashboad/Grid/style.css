@@ -1,0 +1,70 @@
+.grid-container {
+    width: 350px;
+    height : 350px;
+    background-color: var(--darkgrey);
+    border: 2px solid var(--darkgrey);
+    border-radius: 1rem;
+}
+
+.info-flex {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1.5rem;
+    gap: 1rem;
+}
+
+.coin-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.name-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.coin-symbol{
+    color: var(--white);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 600;
+}
+.coin-name{
+    color: var(--grey);
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    margin: 0;
+    font-weight: light;
+}
+
+.chip-flex {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 1.5rem;
+}
+.coin-price-green {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    color: var(--green);
+    border-radius: 2rem;
+    border: 2px solid var(--green);
+    padding: 0.3rem 1.25rem;
+}
+.coin-price-red {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    color: var(--red);
+    border-radius: 2rem;
+    border: 2px solid var(--red);
+    padding: 0.3rem 1.25rem;
+}
