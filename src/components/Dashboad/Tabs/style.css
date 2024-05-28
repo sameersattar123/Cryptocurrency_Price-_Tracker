@@ -6,3 +6,9 @@
     gap: 1.5rem;
     flex-wrap: wrap;
 }
+
+.table-list {
+    display: block;
+    margin: 0 auto;
+    width: 95%;
+}

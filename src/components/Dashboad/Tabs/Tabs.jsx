@@ -40,16 +40,18 @@ export default function LabTabs({coins}) {
           </div>
         </TabPanel>
         <TabPanel value="list">
+          <table className='table-list'>
         {
-            coins.map((coin , i) => {
-              return (
-                <List
-                coin={coin}
-                key={i}
-                />
-              )
-            })
-          }
+          coins.map((coin , i) => {
+            return (
+              <List
+              coin={coin}
+              key={i}
+              />
+            )
+          })
+        }
+        </table>
         </TabPanel>
       </TabContext>
     </div>
