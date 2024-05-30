@@ -43,7 +43,7 @@ const List = ({ coin }) => {
             coin.price_change_percentage_24h > 0 ? "price-green" : "price-red"
           }
         >
-          {coin.current_price.toLocaleString()}
+          $ {coin.current_price.toLocaleString()}
         </h3>
         </td>
         <td>
