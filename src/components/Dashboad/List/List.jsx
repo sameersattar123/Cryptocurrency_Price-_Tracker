@@ -38,6 +38,7 @@ const List = ({ coin }) => {
         )}
       </td>
       <td className="info-container">
+        
         <h3
           className={
             coin.price_change_percentage_24h > 0 ? "price-green" : "price-red"
