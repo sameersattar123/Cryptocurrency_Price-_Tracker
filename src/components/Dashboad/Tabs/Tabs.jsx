@@ -16,13 +16,23 @@ export default function LabTabs({coins}) {
     setValue(newValue);
   };
 
+  const style = {
+    color: "var(--white)",
+    "& .Mui-selected": {
+      color: "var(--blue) !important",
+    },
+    fontFamily: "Inter,sans-serif",
+    fontWeight: 600,
+    textTransform: "capitalize",
+  };
+
   return (
     <div>
       <TabContext value={value}>
         <div>
           <TabList onChange={handleChange} variant='fullWidth'>
-            <Tab label="Grid" value="grid" />
-            <Tab label="List" value="list" />
+            <Tab label="Grid" value="grid" sx={style} />
+            <Tab label="List" value="list" sx={style} />
           </TabList>
         </div>
         <TabPanel value="grid">

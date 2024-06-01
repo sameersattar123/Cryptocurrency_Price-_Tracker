@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Common/Header/Header";
 import Tabs from "../components/Dashboad/Tabs/Tabs";
+import Search from "../components/Dashboad/Search/Search";
 
 const Dashboad = () => {
   const [coins, setCoins] = useState([]);
+  const [search, setSearch] = useState("")
 
+  const filterCoins = coins.filter((coin) => coin.name.toLowerCase().includes(search.toLowerCase()) || coin.symbol.toLowerCase().includes(search.toLowerCase()) )
+  const onSearchChange = (e) => {
+    setSearch(e.target.value)
+    console.log(search)
+  }
   const fetchCoins = async () => {
     const options = {
       method: "GET",
@@ -34,7 +41,8 @@ const Dashboad = () => {
   return (
     <div>
       <Header />
-      <Tabs coins={coins} />
+      <Search search={search} onSearchChange={onSearchChange} />
+      <Tabs coins={filterCoins} />
     </div>
   );
 };
