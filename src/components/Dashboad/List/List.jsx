@@ -28,32 +28,31 @@ const List = ({ coin }) => {
         </td>
         <td>
         {coin.price_change_percentage_24h > 0 ? (
-          <div className="icon-chip-green">
+          <div className="icon-chip-green td-icon">
             <TrendingUpIcon />
           </div>
         ) : (
-          <div className="icon-chip-red">
+          <div className="icon-chip-red td-icon">
             <TrendingDownIcon />
           </div>
         )}
       </td>
       <td className="info-container">
-        
         <h3
           className={
             coin.price_change_percentage_24h > 0 ? "price-green" : "price-red"
           }
         >
-          $ {coin.current_price.toLocaleString()}
+          ${coin.current_price.toLocaleString()}
         </h3>
         </td>
         <td>
-        <p className="total-volume">
+        <p className="total-volume td-total-volume">
         {coin.total_volume.toLocaleString()}
         </p>
         </td>
         <td>
-        <p className="market-cap">
+        <p className="market-cap td-market-cap">
         {coin.market_cap.toLocaleString()}
         </p>
       </td>

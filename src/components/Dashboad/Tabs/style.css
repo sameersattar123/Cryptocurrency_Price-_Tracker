@@ -9,6 +9,20 @@
 
 .table-list {
     display: block;
-    margin: 0 auto;
-    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+    width: 85%;
+}
+
+@media only screen and (max-width : 1000px){
+    .table-list {
+        width: 95%;
+    }
+
+    .coin-image {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
 }
