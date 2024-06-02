@@ -11,3 +11,16 @@
   border-radius: 2rem;
   margin-bottom: 1.5rem;
 }
+
+.search-input {
+  background-color: var(--darkgrey);
+  color: var(--grey);
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  border: none;
+  width: 100%;
+}
+
+.search-input:focus {
+  outline: none;
+}
