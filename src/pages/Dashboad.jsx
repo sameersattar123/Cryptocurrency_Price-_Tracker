@@ -4,6 +4,7 @@ import Tabs from "../components/Dashboad/Tabs/Tabs";
 import Search from "../components/Dashboad/Search/Search";
 import PaginationControlled from "../components/Dashboad/Pagination/Pagination";
 import Loader from "../components/Common/Loader/Loader";
+import TopButton from "../components/Common/TopButton/TopButton";
 
 const Dashboad = () => {
   const [coins, setCoins] = useState([]);
@@ -64,12 +65,13 @@ const Dashboad = () => {
           <Tabs coins={search ? filterCoins : paginatedCoins} />
           {!search && (
             <PaginationControlled
-              page={page}
-              handlePageChange={handlePageChange}
+            page={page}
+            handlePageChange={handlePageChange}
             />
           )}
         </div>
       )}
+      <TopButton/>
     </>
   );
 };
