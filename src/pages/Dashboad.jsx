@@ -3,12 +3,14 @@ import Header from "../components/Common/Header/Header";
 import Tabs from "../components/Dashboad/Tabs/Tabs";
 import Search from "../components/Dashboad/Search/Search";
 import PaginationControlled from "../components/Dashboad/Pagination/Pagination";
+import Loader from "../components/Common/Loader/Loader";
 
 const Dashboad = () => {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [paginatedCoins, setPaginatedCoins] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handlePageChange = (event, value) => {
     setPage(value);
@@ -40,7 +42,8 @@ const Dashboad = () => {
       );
       const data = await response.json();
       setCoins(data);
-      setPaginatedCoins(response.data.slice(0, 10));
+      setPaginatedCoins(data.slice(0, 10));
+      setIsLoading(false);
     } catch (error) {
       console.log(error.message);
     }
@@ -51,14 +54,23 @@ const Dashboad = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <Header />
-      <Search search={search} onSearchChange={onSearchChange} />
-      <Tabs coins={search ? filterCoins : paginatedCoins} />
-      {!search && (
-        <PaginationControlled page={page} handlePageChange={handlePageChange} />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div>
+          <Search search={search} onSearchChange={onSearchChange} />
+          <Tabs coins={search ? filterCoins : paginatedCoins} />
+          {!search && (
+            <PaginationControlled
+              page={page}
+              handlePageChange={handlePageChange}
+            />
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

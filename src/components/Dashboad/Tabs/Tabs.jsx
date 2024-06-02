@@ -10,7 +10,7 @@ import "./style.css"
 
 export default function LabTabs({coins}) {
   // console.log(coins)
-  const [value, setValue] = useState('1');
+  const [value, setValue] = useState('grid');
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
