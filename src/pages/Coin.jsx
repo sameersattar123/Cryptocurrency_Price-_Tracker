@@ -4,12 +4,13 @@ import Header from "../components/Common/Header/Header";
 import Loader from "../components/Common/Loader/Loader";
 import { settingCoinObject } from "../functions/settingCoinObject";
 import List from "../components/Dashboad/List/List";
+import Info from "../components/CoinPage/Info/Info";
 
 const Coin = () => {
   const { coinId } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
-  const [coinData, setCoinData] = useState([])
+  const [coinData, setCoinData] = useState([]);
 
   const fetchCoins = async () => {
     const options = {
@@ -27,8 +28,8 @@ const Coin = () => {
       );
       const data = await response.json();
       console.log(data);
-      settingCoinObject(data , setCoinData)
-      setIsLoading(false)
+      settingCoinObject(data, setCoinData);
+      setIsLoading(false);
     } catch (error) {
       console.log(error.message);
     }
@@ -44,11 +45,12 @@ const Coin = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="grey-wrapper">
-          <List
-          coin={coinData}
-          />
-        </div>
+        <>
+          <div className="grey-wrapper">
+            <List coin={coinData} />
+          </div>
+          <Info name={coinData.name} desc={coinData.desc} />
+        </>
       )}
     </div>
   );
