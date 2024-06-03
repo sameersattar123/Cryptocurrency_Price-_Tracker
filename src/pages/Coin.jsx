@@ -5,39 +5,32 @@ import Loader from "../components/Common/Loader/Loader";
 import { settingCoinObject } from "../functions/settingCoinObject";
 import List from "../components/Dashboad/List/List";
 import Info from "../components/CoinPage/Info/Info";
+import { getCoinData } from "../functions/getCoinData";
+import { getCoinPrices } from "../functions/getPrices";
 
 const Coin = () => {
   const { coinId } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
   const [coinData, setCoinData] = useState([]);
+  const [days, setDays] = useState(30);
 
   const fetchCoins = async () => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        "x-cg-demo-api-key": "CG-1rTY7bAAmtSJvAmMYxnT1jJE",
-      },
-    };
-
-    try {
-      const response = await fetch(
-        `https://api.coingecko.com/api/v3/coins/${coinId}`,
-        options
-      );
-      const data = await response.json();
-      console.log(data);
-      settingCoinObject(data, setCoinData);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error.message);
+    const coinData = await getCoinData(coinId);
+    if (coinData) {
+      settingCoinObject(coinData , setCoinData)
+      const prices = await getCoinPrices(coinId , days)
+      if (prices ) {
+        setIsLoading(false)
+      }
     }
   };
 
   useEffect(() => {
-    fetchCoins();
-  }, []);
+    if (coinId) {
+      fetchCoins();
+    }
+  }, [coinId]);
 
   return (
     <div>
