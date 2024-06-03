@@ -9,36 +9,25 @@ import { getCoinData } from "../functions/getCoinData";
 import { getCoinPrices } from "../functions/getPrices";
 import LineChart from "../components/CoinPage/LineChart/LineChart";
 import { gettingDate } from "../functions/getDate";
+import SelectDays from "../components/CoinPage/SelectDays/SelectDays";
+import { settingChartData } from "../functions/settingChartData";
 
 const Coin = () => {
   const { coinId } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
   const [coinData, setCoinData] = useState([]);
-  const [days, setDays] = useState(30);
-  const [chartData, setChartData] = useState({})
+  const [days, setDays] = useState(7);
+  const [chartData, setChartData] = useState({});
 
   const fetchCoins = async () => {
     const coinData = await getCoinData(coinId);
     if (coinData) {
-      settingCoinObject(coinData , setCoinData)
-      const prices = await getCoinPrices(coinId , days)
-      if (prices ) {
-        setChartData({
-          labels : prices.map((price) => gettingDate(price[0])),
-          datasets : [
-            {
-              data: prices?.map((data) => data[1]),
-              borderWidth: 3,
-              fill: true,
-              backgroundColor: "rgba(58, 128, 233,0.1)",
-              tension: 0.25,
-              borderColor: "#3a80e9",
-              pointRadius: 0,
-            }
-          ]
-        })
-        setIsLoading(false)
+      settingCoinObject(coinData, setCoinData);
+      const prices = await getCoinPrices(coinId, days);
+      if (prices) {
+        settingChartData(setChartData, prices);
+        setIsLoading(false);
       }
     }
   };
@@ -48,6 +37,15 @@ const Coin = () => {
       fetchCoins();
     }
   }, [coinId]);
+
+  const handleDaysChange = async (event) => {
+    setDays(event.target.value);
+    const prices = await getCoinPrices(coinId, event.target.value);
+    if (prices) {
+      settingChartData(setChartData, prices);
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div>
@@ -60,9 +58,8 @@ const Coin = () => {
             <List coin={coinData} />
           </div>
           <div className="grey-wrapper">
-            <LineChart 
-            chartData={chartData}
-            />
+            <SelectDays days={days} handleDaysChange={handleDaysChange} />
+            <LineChart chartData={chartData} />
           </div>
           <Info name={coinData.name} desc={coinData.desc} />
         </>
