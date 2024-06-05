@@ -11,20 +11,22 @@ import LineChart from "../components/CoinPage/LineChart/LineChart";
 import { gettingDate } from "../functions/getDate";
 import SelectDays from "../components/CoinPage/SelectDays/SelectDays";
 import { settingChartData } from "../functions/settingChartData";
+import ToggleComponent from "../components/CoinPage/ToggleComponent/ToggleComponent";
 
 const Coin = () => {
   const { coinId } = useParams();
-
+  
   const [isLoading, setIsLoading] = useState(true);
   const [coinData, setCoinData] = useState([]);
   const [days, setDays] = useState(7);
   const [chartData, setChartData] = useState({});
+  const [pricesType, setPricesType] = useState("prices");
 
   const fetchCoins = async () => {
     const coinData = await getCoinData(coinId);
     if (coinData) {
       settingCoinObject(coinData, setCoinData);
-      const prices = await getCoinPrices(coinId, days);
+      const prices = await getCoinPrices(coinId, days ,  pricesType);
       if (prices) {
         settingChartData(setChartData, prices);
         setIsLoading(false);
@@ -32,6 +34,8 @@ const Coin = () => {
     }
   };
 
+
+  
   useEffect(() => {
     if (coinId) {
       fetchCoins();
@@ -40,13 +44,21 @@ const Coin = () => {
 
   const handleDaysChange = async (event) => {
     setDays(event.target.value);
-    const prices = await getCoinPrices(coinId, event.target.value);
+    const prices = await getCoinPrices(coinId, event.target.value , pricesType);
     if (prices) {
       settingChartData(setChartData, prices);
       setIsLoading(false);
     }
   };
-
+  const handleChangePricesType = async(event, newType) => {
+    setPricesType(newType);
+    const prices = await getCoinPrices(coinId, days , newType);
+    if (prices) {
+      settingChartData(setChartData, prices);
+      setIsLoading(false);
+    }
+  };
+  
   return (
     <div>
       <Header />
@@ -59,6 +71,7 @@ const Coin = () => {
           </div>
           <div className="grey-wrapper">
             <SelectDays days={days} handleDaysChange={handleDaysChange} />
+            <ToggleComponent pricesType={pricesType} handleChangePricesType={handleChangePricesType} />
             <LineChart chartData={chartData} />
           </div>
           <Info name={coinData.name} desc={coinData.desc} />
