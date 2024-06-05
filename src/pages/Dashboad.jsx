@@ -5,6 +5,7 @@ import Search from "../components/Dashboad/Search/Search";
 import PaginationControlled from "../components/Dashboad/Pagination/Pagination";
 import Loader from "../components/Common/Loader/Loader";
 import TopButton from "../components/Common/TopButton/TopButton";
+import { get100Coins } from "../functions/get100Coins";
 
 const Dashboad = () => {
   const [coins, setCoins] = useState([]);
@@ -27,31 +28,17 @@ const Dashboad = () => {
   const onSearchChange = (e) => {
     setSearch(e.target.value);
   };
-  const fetchCoins = async () => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        "x-cg-demo-api-key": "CG-1rTY7bAAmtSJvAmMYxnT1jJE",
-      },
-    };
-
-    try {
-      const response = await fetch(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd",
-        options
-      );
-      const data = await response.json();
-      setCoins(data);
-      setPaginatedCoins(data.slice(0, 10));
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error.message);
+  const getData = async () => {
+   const coins = await get100Coins()
+   if (coins) {
+     setCoins(coins);
+     setPaginatedCoins(coins.slice(0, 10));
+     setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchCoins();
+    getData();
   }, []);
 
   return (

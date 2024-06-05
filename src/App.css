@@ -7,3 +7,10 @@
     display: block;
     margin: 1.5rem auto;
   }
+
+  .coin-days-flex {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2rem;
+  }
