@@ -7,6 +7,7 @@ import { getCoinPrices } from "../functions/getPrices";
 import { settingCoinObject } from "../functions/settingCoinObject";
 import { settingChartData } from "../functions/settingChartData";
 import Loader from "../components/Common/Loader/Loader";
+import List from "../components/Dashboad/List/List";
 
 const Compare = () => {
   const [loading, setLoading] = useState(false);
@@ -14,7 +15,10 @@ const Compare = () => {
   const [crypto2, setCrypto2] = useState("ethereum");
   const [crypto1Data, setCrypto1Data] = useState({});
   const [crypto2Data, setCrypto2Data] = useState({});
-  const [priceType, setSriceType] = useState("prices");
+  const [priceType, setPriceType] = useState("prices");
+
+  console.log(crypto1Data)
+  console.log(crypto2Data)
 
   const [days, setDays] = useState(30);
   const handleDaysChange = (event) => {
@@ -26,6 +30,7 @@ const Compare = () => {
   }, []);
 
   const getData = async () => {
+    setLoading(true)
     const coin1 = await getCoinData(crypto1);
     const coin2 = await getCoinData(crypto2);
 
@@ -49,8 +54,8 @@ const Compare = () => {
   };
 
   const handleCoinChange = async (event, isCoin) => {
+    setLoading(true);
     if (isCoin) {
-      setLoading(true);
       setCrypto2(event.target.value);
       const coinData = await getCoinData(event.target.value);
         settingCoinObject(coinData, setCrypto2Data);
@@ -60,8 +65,9 @@ const Compare = () => {
         settingCoinObject(coinData, setCrypto1Data);
     }
 
-    const price1 = await getCoinPrices(event.target.value, days, priceType);
-    const price2 = await getCoinPrices(event.target.value, days, priceType);
+    const price1 = await getCoinPrices(crypto1, days, priceType);
+    const price2 = await getCoinPrices(crypto2, days, priceType);
+    setLoading(false)
   };
   return (
     <div>
@@ -69,6 +75,7 @@ const Compare = () => {
       {loading ? (
         <Loader />
       ) : (
+        <>
         <div className="coin-days-flex">
           <SelectCoins
             crypto1={crypto1}
@@ -81,6 +88,13 @@ const Compare = () => {
             noTag={true}
           />
         </div>
+        <div className="grey-wrapper">
+          <List coin={crypto1Data} />
+        </div>
+        <div className="grey-wrapper">
+          <List coin={crypto2Data} />
+        </div>
+        </>
       )}
     </div>
   );
