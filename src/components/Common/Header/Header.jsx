@@ -15,15 +15,15 @@ const Header = () => {
         <Link to="/">
           <p className="link">Home</p>
         </Link>
-        <Link to="/compare">
-          <p className="link">Compare</p>
-        </Link>
         <Link to="/dashboard">
           <Button
             outlined={false}
             onClick={() => console.log("sameer sattar")}
             text={"Dashboard"}
           />
+        </Link>
+        <Link to="/compare">
+          <p className="link">Compare</p>
         </Link>
       </div>
       <div className="drawer">
