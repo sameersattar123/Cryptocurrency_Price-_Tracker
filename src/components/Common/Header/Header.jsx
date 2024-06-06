@@ -18,9 +18,6 @@ const Header = () => {
         <Link to="/compare">
           <p className="link">Compare</p>
         </Link>
-        <Link to="/watchlist">
-          <p className="link">WatchList</p>
-        </Link>
         <Link to="/dashboard">
           <Button
             outlined={false}

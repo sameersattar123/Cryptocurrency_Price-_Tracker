@@ -12,6 +12,7 @@ import { gettingDate } from "../functions/getDate";
 import SelectDays from "../components/CoinPage/SelectDays/SelectDays";
 import { settingChartData } from "../functions/settingChartData";
 import ToggleComponent from "../components/CoinPage/ToggleComponent/ToggleComponent";
+import Footer from "../components/Common/Footer/Footer";
 
 const Coin = () => {
   const { coinId } = useParams();
@@ -75,6 +76,7 @@ const Coin = () => {
             <LineChart chartData={chartData} priceType={pricesType} />
           </div>
           <Info name={coinData.name} desc={coinData.desc} />
+          <Footer/>
         </>
       )}
     </div>

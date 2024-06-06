@@ -6,6 +6,7 @@ import PaginationControlled from "../components/Dashboad/Pagination/Pagination";
 import Loader from "../components/Common/Loader/Loader";
 import TopButton from "../components/Common/TopButton/TopButton";
 import { get100Coins } from "../functions/get100Coins";
+import Footer from "../components/Common/Footer/Footer";
 
 const Dashboad = () => {
   const [coins, setCoins] = useState([]);
@@ -59,6 +60,7 @@ const Dashboad = () => {
         </div>
       )}
       <TopButton/>
+      <Footer/>
     </>
   );
 };

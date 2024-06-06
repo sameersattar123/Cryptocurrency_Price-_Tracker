@@ -11,6 +11,7 @@ import List from "../components/Dashboad/List/List";
 import Info from "../components/CoinPage/Info/Info";
 import LineChart from "../components/CoinPage/LineChart/LineChart";
 import ToggleComponent from "../components/CoinPage/ToggleComponent/ToggleComponent";
+import Footer from "../components/Common/Footer/Footer";
 
 const Compare = () => {
   const [loading, setLoading] = useState(false);
@@ -122,6 +123,7 @@ const Compare = () => {
           </div>
           <Info name={crypto1Data.name} desc={crypto1Data.desc} />
           <Info name={crypto2Data.name} desc={crypto2Data.desc} />
+          <Footer/>
         </>
       )}
     </div>
