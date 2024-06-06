@@ -42,7 +42,7 @@ const SelectCoins = ({crypto1, crypto2, handleCoinChange}) => {
           label="Crypto 1"
           onChange={(e) => handleCoinChange(e, false)}
         >
-          {AllCoins.map((coin) => {
+          {AllCoins.filter((item) => item.id != crypto2).map((coin) => {
             return (
               <MenuItem value={coin.id} key={coin.id}>
                 {coin.name}
@@ -57,7 +57,7 @@ const SelectCoins = ({crypto1, crypto2, handleCoinChange}) => {
           label="Crypto 1"
           onChange={(e) => handleCoinChange(e, true)}
         >
-          {AllCoins.map((coin) => {
+          {AllCoins.filter((item) => item.id != crypto1).map((coin) => {
             return (
               <MenuItem value={coin.id} key={coin.id}>
                 {coin.name}

@@ -72,7 +72,7 @@ const Coin = () => {
           <div className="grey-wrapper">
             <SelectDays days={days} handleDaysChange={handleDaysChange} />
             <ToggleComponent pricesType={pricesType} handleChangePricesType={handleChangePricesType} />
-            <LineChart chartData={chartData} />
+            <LineChart chartData={chartData} priceType={pricesType} />
           </div>
           <Info name={coinData.name} desc={coinData.desc} />
         </>

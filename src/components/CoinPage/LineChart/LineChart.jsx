@@ -13,7 +13,15 @@ const LineChart = ({chartData , priceType , multiAxis}) => {
     interaction: {
       mode: "index",
       intersect: false,
-    }
+    },
+    scales: {
+      crypto1: {
+        position: "left",
+      },
+      crypto2: multiAxis && {
+        position: "right",
+      },
+    },
   };
   return <Line data={chartData} options={options} />;
 };
